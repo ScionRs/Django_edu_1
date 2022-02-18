@@ -1,0 +1,89 @@
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+git init -  начать слежение за существующим проектом
+git status - проверить статус
+git diff. - подробный статус
+Команда git diff без дополнительных параметров позволяет посмотреть, что было 
+изменено, но пока не проиндексировано
+git diff --cached - покажет проиндексированные изменения
+git add . - добавить все
+git commit -m "Initial version" - сделать коммит
+git commit -a -m 'added new benchmarks' - фиксация изменений без использования git add
+git remote add origin https:// - репозиторий на сайте для добавления
+git push -u origin master
+rm -rf .git - удалить репозиторий
+ git rm --cached README - прекратить следить за файлом
+del /F /S /Q /A .git - точно стереть все к х***.
+git mv file_from file_to - сменить имена файлов
+.gitignore 
+*.a # пропускать файлы, заканчивающиеся на .a
+!lib.a # но отслеживать файлы lib.a, несмотря на пропуск файлов на .a
+/TODO # игнорировать только корневой файл TODO, а не файлы вида subdir/TODO
+build/ # игнорировать все файлы в папке build/
+doc/*.txt # игнорировать doc/notes.txt, но не doc/server/arch.txt
+https://github.com/github/gitignore. - примеры gitignore
+git log. - посмотреть историю
+git log -p -2 - -p разница внесенная каждым коммитом -2 ограничение вывода коммитов
+git log --stat - краткая статистика по каждой версии
+git log --pretty=oneline ||  short, full и fuller - меняем форму вывода информации 
+git log --pretty=format:"%h - %an, %ar : %s" - вывод записи журнала в желаемой форме
+ git log --pretty=format:"%h %s" --graph - добавляет небольшой ASCII-граф 
+с историей ветвлений и слияний
+ git log --since=2.weeks - список зафиксированных изменений за последние 2 недели
+git log --Sfunction_name - для поиска последней версии, в которую добавлялась или из которой удалялась 
+ссылка на некую функцию
+git commit –amend - отмена изменений 
+Точная инструкция: 
+ git commit -m 'изначальный коммит'
+$ git add forgotten_file
+$ git commit --amend
+-
+git reset HEAD benchmarks.rb - отменить индексирование файла
+git checkout -- benchmarks.rb -- отменить внесенные изменения в файл
+git remote -v -  позволяет увидеть URL-адреса, которые Git хранит для сокращенного имени, используемого при чтении из данного удаленного репозитория и при 
+записи в него
+-
+git remote add pb https://github.com/paulboone/ticgit - добавление удаленного репозитория коллеги Пола с сокращением pb
+-
+git fetch pb - скачивание всей информации, которая есть у коллеги, но отсутствует у вас
+-
+git remote show origin - для получения дополнительной информации о конкретном удаленном репозитории
+
+git remote rename pb paul -  изменение сокращенного имени
+
+git remote rm paul - удаление ссылки на удаленный репозиторий
+
+git tag - вывод списков тегов
+
+git tag -a v1.4 -m 'my version 1.4' - создание тега с комментарием
+
+git show v1.4 - для просмотра данных тега вместе с помеченным им коммитом 
+
+git tag v1.4-lw - создание легковесного тега
+
+git show v1.4-lw - вывод легковесного тега
+
+ git log --pretty=oneline - просмотр всех коммитов 
+
+git tag -a v1.2 9fceb02 - присвоение тега уже заданному коммиту
+
+git push origin v1.5 - отправка тега на удаленный сервер(делается отдельно)
+
+git push origin --tags - отправка всех тегов которые не были отправлены
+
+Создание псевдонимов для команд:
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+-
+Ветки
+git branch - посмотреть текущие ветки
+git branch testing - создать новую ветку с именем testing
+git checkout testing - перейти на ветку testing
+git log --oneline --decorate -–graph --all - посмотреть историю ветвления
+git checkout -b iss53 - создать ветку с именем iss53 и сразу перейти на нее
+git branch -d hotfix - удалить ветку с именем hotfix
+git branch -v - посмотреть последний коммит, выполненный в каждой ветке
+git branch --merged || --no-merged - посмотреть ветки в которых выполнено или не выполнено слияние
