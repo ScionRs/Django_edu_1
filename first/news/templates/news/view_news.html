@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+  <div class="card-header">
+    {{news_item.category}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title {% cycle 'text-danger' 'text-success' 'text-warning' %}">{{news_item.title}}</h5>
+    <p class="media-body">
+      {% if item.photo %}
+      <img src="{{news_item.photo.url}}" alt="News photo" width="350px">
+      {% else %}
+      <img src="https://media.istockphoto.com/vectors/error-page-or-file-not-found-icon-vector-id924949200?k=20&m=924949200&s=170667a&w=0&h=-g01ME1udkojlHCZeoa1UnMkWZZppdIFHEKk6wMvxrs=" width="350px" alt="Image error">
+      {% endif %}
+    </p>
+    <p class="card-text">{{news_item.content}}</p>
+      <p>{{news_item.created_at|date:"Y-m-d"}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<hr/>
+</div>
+{% endblock %}
+
